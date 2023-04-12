@@ -1,0 +1,20 @@
+{
+    "pretrained_model_name_or_path": "CompVis/stable-diffusion-v1-1",
+    "revision": null,
+    "output_dir": "sd-model-finetuned",
+    "device": "cuda",
+    "seed": 42,
+    "prompts":[
+        "a family scene in the simpsons animated tv, The Simpson",
+        "people walking down the street, The Simpson",
+        "the person character with his friend, person, The Simpson",
+        "the simpsons chair, The Simpson",
+        "a woman and man in bed, The Simpson",
+        "an illustration of the simpsons, The Simpson",
+        "a scene from the simpsons's school, The Simpson",
+        "the simpsons riding a horse, The Simpson",
+        "person and his friends sitting in an airplane, The Simpson",
+        "person sitting on a couch, looking down at the simpsons sail boat, The Simpson"
+      ],
+    "num_images": 10
+}
