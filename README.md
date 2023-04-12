@@ -31,7 +31,7 @@ For example, if you want to change the pre-trained model or the dataset, just ch
 
 ## Inferencing
 
-1. `configuration_file/config.json` stores the parameter you need to change. 
+1. `configuration_file/config_test.json` stores the parameter you need to change. 
 
 PLEASE make sure that the parameter output_dir and pretrained_model_name_or_path is the SAME as the parameter output_dir and pretrained_model_name_or_path in `config.json`. 
 
