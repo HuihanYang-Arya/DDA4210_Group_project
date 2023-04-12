@@ -38,7 +38,16 @@ PLEASE make sure that the parameter output_dir and pretrained_model_name_or_path
 To change the prompts, please change the content in prompts in the format of list. parameter num_images refers to the number of pictures generated of each prompt.
 
 2. to run the testing please type in the following command in terminal
-`python inference.py`
+`python inference_lora.py`
 
+(other is still under process)
+
+## measurement of fine-tune algorithm
+
+UNDER PROCESS
+
+# THINGS NEEDS TO DO
+
+1. !!! Find out the measurement (loss function) of diffusion model and load the performance into tensorboard
 
 For any questions, please CONTACT Huihan Yang ASAP!
