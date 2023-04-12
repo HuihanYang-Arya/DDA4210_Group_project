@@ -19,7 +19,7 @@ Link for our basic working pipeline: https://shimo.im/file-invite/Xyip8inwgJqyJq
 
 PLEASE NOTE THAT FOR PREPROCESSING AND REQUIREMENT OF PIPELINE, you may need to refer to https://github.com/huggingface/diffusers and https://github.com/huggingface/diffusers/tree/main/examples/text_to_image. 
 
-1. `config.json` stores the parameter you need to change.
+1. `configuration_file/config.json` stores the parameter you need to change.
 
 For example, if you want to change the pre-trained model or the dataset, just change the content in `config.json`
 
@@ -31,7 +31,7 @@ For example, if you want to change the pre-trained model or the dataset, just ch
 
 ## Inferencing
 
-1. `config_test.json` stores the parameter you need to change. 
+1. `configuration_file/config.json` stores the parameter you need to change. 
 
 PLEASE make sure that the parameter output_dir and pretrained_model_name_or_path is the SAME as the parameter output_dir and pretrained_model_name_or_path in `config.json`. 
 
