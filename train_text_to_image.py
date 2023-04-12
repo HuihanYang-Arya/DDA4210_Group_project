@@ -112,7 +112,7 @@ def log_validation(vae, text_encoder, tokenizer, unet, args, accelerator, weight
 
 
 def parse_args():
-    with open("config.json", "r") as f:
+    with open("configuration_file/config.json", "r") as f:
         config = json.load(f)
 
     class Config:

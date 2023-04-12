@@ -92,7 +92,7 @@ These are LoRA adaption weights for {base_model}. The weights were fine-tuned on
 
 
 def parse_args():
-    with open("config.json", "r") as f:
+    with open("configuration_file/config.json", "r") as f:
         config = json.load(f)
 
     class Config:

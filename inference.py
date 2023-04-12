@@ -29,12 +29,13 @@ def main(config):
             images.append(pipeline(prompt, num_inference_steps=30, generator=generator).images[0])
 
         # Save the generated images to the output directory
-        prompt_output_dir = os.path.join(config["output_dir"], prompt.replace(" ", "_"))
+        tmp = os.path.join(config["output_dir"],'pirc_result')
+        prompt_output_dir = os.path.join(tmp, prompt.replace(" ", "_"))
         os.makedirs(prompt_output_dir, exist_ok=True)
         for i, image in enumerate(images):
             image.save(os.path.join(prompt_output_dir, f"image_{i}.png"))
 
 if __name__ == "__main__":
-    config_path = "config_test.json"
+    config_path = "configuration_file/config_test.json"
     config = load_config(config_path)
     main(config)
