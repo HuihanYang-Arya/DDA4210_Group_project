@@ -35,12 +35,19 @@ For example, if you want to change the pre-trained model or the dataset, just ch
 
 PLEASE make sure that the parameter output_dir and pretrained_model_name_or_path is the SAME as the parameter output_dir and pretrained_model_name_or_path in `config.json`. 
 
-To change the prompts, please change the content in prompts in the format of list. parameter num_images refers to the number of pictures generated of each prompt.
+To change the prompts, please change the content in prompts in the format of list. parameter num_images refers to the number of pictures generated of each prompt. Please be aware that to generate a simpson's style picture, word "The Simpson" is required in the last of sentence. 
 
 2. to run the testing please type in the following command in terminal
 `python inference_lora.py`
 
 (other is still under process)
+
+3. Some fine-tuned models has been provided.
+
+    **file `sd-model-finetuned-114514`**
+    * `pytorch_lora_weights.bin` stores the fine-tune results.
+    
+    * Corresponding configurations can be found in `configuration_file/config_train_114514.json`. To directly see the result, you could change the outdir and pretrained_model_name_or_path parameters in `configuration_file/config_test.json` according to the ones in `configuration_file/config_train_114514.json`. You could also change the prompts to whatever you like. 
 
 ## measurement of fine-tune algorithm
 
