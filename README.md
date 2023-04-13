@@ -59,6 +59,9 @@ To change the prompts, please change the content in prompts in the format of lis
 
     Now you could run `python -m pytorch_fid generated_images resized_original_pic --device cuda:0 --dims 768`. The meaning of parameters and source code can be found in https://github.com/mseitzer/pytorch-fid.
 
+2. Likelihood 
+
+    * link: https://arxiv.org/pdf/2011.13456.pdf
 
 
 # THINGS NEEDS TO DO
