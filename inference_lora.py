@@ -26,7 +26,7 @@ def main(config):
         # Generate images for the given prompt
         images = []
         for i in range(config["num_images"]):
-            images.append(pipeline(prompt, num_inference_steps=60, generator=generator).images[0])
+            images.append(pipeline(prompt, num_inference_steps=config["num_inference_steps"], generator=generator).images[0])
 
         # Save the generated images to the output directory
         tmp = os.path.join(config["output_dir"],'pirc_result')

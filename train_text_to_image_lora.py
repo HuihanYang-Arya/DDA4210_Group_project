@@ -36,7 +36,7 @@ from packaging import version
 from torchvision import transforms
 from tqdm.auto import tqdm
 from transformers import CLIPTextModel, CLIPTokenizer
-
+import copy
 import diffusers
 from diffusers import AutoencoderKL, DDPMScheduler, DiffusionPipeline, UNet2DConditionModel
 from diffusers.loaders import AttnProcsLayers
@@ -122,6 +122,9 @@ DATASET_NAME_MAPPING = {
 
 
 def main():
+    # Add these two lines before the training loop  
+    min_loss = float("inf")
+    best_model_weights = None
     args = parse_args()
     logging_dir = os.path.join(args.output_dir, args.logging_dir)
 
@@ -511,7 +514,9 @@ def main():
                 optimizer.step()
                 lr_scheduler.step()
                 optimizer.zero_grad()
-
+            if avg_loss.item() < min_loss:  # Add this line after computing avg_loss
+                min_loss = avg_loss.item()
+                best_model_weights = copy.deepcopy(unet.state_dict())
             # Checks if the accelerator has performed an optimization step behind the scenes
             if accelerator.sync_gradients:
                 progress_bar.update(1)
@@ -530,59 +535,13 @@ def main():
 
             if global_step >= args.max_train_steps:
                 break
-        print(114514)
-        a = 1
-        if accelerator.is_main_process:
-            if a != 1 and epoch % args.validation_epochs == 0:
-                # create pipeline
-                pipeline = DiffusionPipeline.from_pretrained(
-                    args.pretrained_model_name_or_path,
-                    unet=accelerator.unwrap_model(unet),
-                    revision=args.revision,
-                    torch_dtype=weight_dtype,
-                )
-                pipeline = pipeline.to(accelerator.device)
-                pipeline.set_progress_bar_config(disable=True)
-
-                generator = torch.Generator(device=accelerator.device).manual_seed(args.seed)
-                
-                for prompt in validation_prompts:
-                    logger.info(
-                        f"Running validation... \n Generating {args.num_validation_images} images with prompt:"
-                        f" {prompt}."
-                    )
-
-                    images = []
-                    for _ in range(args.num_validation_images):
-                        images.append(
-                            pipeline(prompt, num_inference_steps=30, generator=generator).images[0]
-                        )
-
-                    for tracker in accelerator.trackers:
-                        print(tracker.name)
-                        if tracker.name == "tensorboard":
-                            np_images = np.stack([np.asarray(img) for img in images])
-                            tracker.writer.add_images(f"validation/{prompt}", np_images, epoch, dataformats="NHWC")
-                        if tracker.name == "wandb":
-                            tracker.log(
-                                {
-                                    f"validation/{prompt}": [
-                                        wandb.Image(image, caption=f"{i}: {prompt}")
-                                        for i, image in enumerate(images)
-                                    ]
-                                }
-                            )
-
-                del pipeline
-                torch.cuda.empty_cache()
-
 
     # Save the lora layers
     accelerator.wait_for_everyone()
     if accelerator.is_main_process:
+        unet.load_state_dict(best_model_weights)
         unet = unet.to(torch.float32)
         unet.save_attn_procs(args.output_dir)
-
         if args.push_to_hub:
             save_model_card(
                 repo_id,
@@ -597,22 +556,6 @@ def main():
                 commit_message="End of training",
                 ignore_patterns=["step_*", "epoch_*"],
             )
-
-
-    if accelerator.is_main_process:
-        for tracker in accelerator.trackers:
-            if tracker.name == "tensorboard":
-                np_images = np.stack([np.asarray(img) for img in images])
-                tracker.writer.add_images("test", np_images, epoch, dataformats="NHWC")
-            if tracker.name == "wandb":
-                tracker.log(
-                    {
-                        "test": [
-                            wandb.Image(image, caption=f"{i}: {args.validation_prompt}")
-                            for i, image in enumerate(images)
-                        ]
-                    }
-                )
 
     accelerator.end_training()
 
