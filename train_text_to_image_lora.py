@@ -44,7 +44,7 @@ from diffusers.models.attention_processor import LoRAAttnProcessor
 from diffusers.optimization import get_scheduler
 from diffusers.utils import check_min_version, is_wandb_available
 from diffusers.utils.import_utils import is_xformers_available
-
+from torch.utils.tensorboard import SummaryWriter
 
 # Will error if the minimal version of diffusers is not installed. Remove at your own risks.
 check_min_version("0.15.0.dev0")
@@ -92,7 +92,7 @@ These are LoRA adaption weights for {base_model}. The weights were fine-tuned on
 
 
 def parse_args():
-    with open("configuration_file/config.json", "r") as f:
+    with open("configuration_file/config_train_114514.json", "r") as f:
         config = json.load(f)
 
     class Config:
@@ -454,10 +454,12 @@ def main():
     # Only show the progress bar once on each machine.
     progress_bar = tqdm(range(global_step, args.max_train_steps), disable=not accelerator.is_local_main_process)
     progress_bar.set_description("Steps")
-
+    writer = SummaryWriter(args.tensorboard_log_dir)
+    global_step = 0
     for epoch in range(first_epoch, args.num_train_epochs):
         unet.train()
         train_loss = 0.0
+        global_step +=1
         for step, batch in enumerate(train_dataloader):
             # Skip steps until we reach the resumed step
             if args.resume_from_checkpoint and epoch == first_epoch and step < resume_step:
@@ -514,10 +516,14 @@ def main():
                 optimizer.step()
                 lr_scheduler.step()
                 optimizer.zero_grad()
+            
+            writer.add_scalar("Loss/train", avg_loss.item(), global_step)
+            #writer.add_scalar("Learning Rate", lr_scheduler.get_last_lr()[0], global_step)
             if avg_loss.item() < min_loss:  # Add this line after computing avg_loss
                 min_loss = avg_loss.item()
                 best_model_weights = copy.deepcopy(unet.state_dict())
             # Checks if the accelerator has performed an optimization step behind the scenes
+            global_step += 1
             if accelerator.sync_gradients:
                 progress_bar.update(1)
                 global_step += 1
@@ -533,8 +539,6 @@ def main():
             logs = {"step_loss": loss.detach().item(), "lr": lr_scheduler.get_last_lr()[0]}
             progress_bar.set_postfix(**logs)
 
-            if global_step >= args.max_train_steps:
-                break
 
     # Save the lora layers
     accelerator.wait_for_everyone()
@@ -558,7 +562,7 @@ def main():
             )
 
     accelerator.end_training()
-
+    writer.close()
 
 if __name__ == "__main__":
     main()

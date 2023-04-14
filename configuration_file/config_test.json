@@ -17,5 +17,6 @@
         "person sitting on a couch, looking down at the simpsons sail boat, The Simpson"
       ],
     "num_images": 10,
-    "num_inference_steps":70
+    "num_inference_steps":70,
+    "set_grads_to_none":true
 }
