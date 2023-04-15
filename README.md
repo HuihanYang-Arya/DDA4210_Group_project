@@ -64,6 +64,12 @@ To change the prompts, please change the content in prompts in the format of lis
     * link: https://arxiv.org/pdf/2011.13456.pdf
 
 
+## Result Record
+
+* sd-model-finetuned-114514-large: 2000pics/80epoch/non-modified data/lora
+
+* sd-model-finetuned-lora-regu: lora with regularization technique added
+
 # THINGS NEEDS TO DO
 
 1. !!! Find out the measurement (loss function) of diffusion model and load the performance into tensorboard
