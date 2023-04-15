@@ -70,6 +70,8 @@ To change the prompts, please change the content in prompts in the format of lis
 
 * sd-model-finetuned-lora-regu: lora with regularization technique added
 
+* model-simple-finetuned: 2000pics/80epoch/non-modified data/simple method
+
 # THINGS NEEDS TO DO
 
 1. !!! Find out the measurement (loss function) of diffusion model and load the performance into tensorboard
