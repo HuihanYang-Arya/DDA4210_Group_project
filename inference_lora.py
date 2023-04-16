@@ -10,6 +10,7 @@ def load_config(config_path):
     return config
 
 def main(config):
+    print(config["pretrained_model_name_or_path"])
     # Load the trained pipeline
     pipeline = StableDiffusionPipeline.from_pretrained(
         config["pretrained_model_name_or_path"], revision=config["revision"], torch_dtype=torch.float32
@@ -33,7 +34,8 @@ def main(config):
         prompt_output_dir = os.path.join(tmp, prompt.replace(" ", "_"))
         os.makedirs(prompt_output_dir, exist_ok=True)
         for i, image in enumerate(images):
-            image.save(os.path.join(prompt_output_dir, f"image_{i}.png"))
+            name = str(prompt.replace(" ", "_"))+f"image_{i}.png"
+            image.save(os.path.join(prompt_output_dir, name))
 
 if __name__ == "__main__":
     config_path = "configuration_file/config_test.json"

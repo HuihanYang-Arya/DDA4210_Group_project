@@ -50,7 +50,8 @@ def main(config):
         prompt_output_dir = os.path.join(tmp, prompt.replace(" ", "_"))
         os.makedirs(prompt_output_dir, exist_ok=True)
         for i, image in enumerate(images):
-            image.save(os.path.join(prompt_output_dir, f"image_{i}.png"))
+            name = str(prompt.replace(" ", "_"))+f"image_{i}.png"
+            image.save(os.path.join(prompt_output_dir, name))
 
 if __name__ == "__main__":
     config_path = "configuration_file/config_normal_test.json"
