@@ -1,7 +1,7 @@
 {
   "pretrained_model_name_or_path": "Norod78/sd-simpsons-model",
   "revision": null,
-  "output_dir": "sd-model-finetuned-modified-dataset",
+  "output_dir": "sd-model-finetuned-regu-0.01",
   "device": "cuda",
   "seed": 42,
   "prompts":[
