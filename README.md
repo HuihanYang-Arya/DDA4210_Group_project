@@ -1,6 +1,10 @@
 # DDA4210-project
 
+Group Name: Original Logic
+
 Group Member: Huihan Yang; Jinrui Lin; Rongxiao Qu; Haoming Mo
+
+**Note this repo is still UNDER MAINTAINACE**
 
 Link for our basic working pipeline: https://shimo.im/file-invite/Xyip8inwgJqyJqzQRye5NvMZKbpA6/ urbbrgroun 邀请您协作「Diffusion-simpons-4210-project」，点击链接开始编辑 (please contact me if the link is invalid)
 
