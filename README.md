@@ -12,6 +12,8 @@ Link for our basic working pipeline: https://shimo.im/file-invite/Xyip8inwgJqyJq
 
 * We preprocess the data (for this part the details will be provided later) and make our own dataset https://huggingface.co/datasets/JerryMo/image-caption-blip-for-training. The dataset contains around 2500 pictures with 135MB.
 
+* For more details about dataset app, please check https://github.com/RickLin616/sd-annotation-app
+
 * For convenient training, you may also need a dataset with smaller size. Here are two ways you could do:
     
     1. tune the parameter max_train_samples in `config.json`.
@@ -76,8 +78,5 @@ To change the prompts, please change the content in prompts in the format of lis
 
 * model-simple-finetuned: 2000pics/80epoch/non-modified data/simple method
 
-# THINGS NEEDS TO DO
-
-1. !!! Find out the measurement (loss function) of diffusion model and load the performance into tensorboard
 
 For any questions, please CONTACT Huihan Yang ASAP!
