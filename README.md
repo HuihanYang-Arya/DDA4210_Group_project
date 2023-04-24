@@ -12,7 +12,7 @@ Link for our basic working pipeline: https://shimo.im/file-invite/Xyip8inwgJqyJq
 
 Our model can be found in 🤗 https://huggingface.co/JerryMo/db-simpsons-asim-style and 🤗 https://huggingface.co/Foxintohumanbeing/simpson-lora. The QR code of our APP is in `APP_QR.png`. Enjoy!👋
 
-## Data
+## Data 
 
 * We preprocess the data (for this part the details will be provided later) and make our own dataset https://huggingface.co/datasets/JerryMo/image-caption-blip-for-training. The dataset contains around 2500 pictures with 135MB.
 
@@ -25,7 +25,7 @@ Our model can be found in 🤗 https://huggingface.co/JerryMo/db-simpsons-asim-s
     2. use https://huggingface.co/datasets/skiracer/simpsons_blip_captions, which is a relatively small dataset.
 
 
-## Trainning
+## Trainning (UNDER MAINTAINANCE)
 
 PLEASE NOTE THAT FOR PREPROCESSING AND REQUIREMENT OF PIPELINE, you may need to refer to https://github.com/huggingface/diffusers and https://github.com/huggingface/diffusers/tree/main/examples/text_to_image. 
 
@@ -69,12 +69,12 @@ To change the prompts, please change the content in prompts in the format of lis
 
     Now you could run `python -m pytorch_fid generated_images resized_original_pic --device cuda:0 --dims 768`. The meaning of parameters and source code can be found in https://github.com/mseitzer/pytorch-fid.
 
-2. Likelihood 
+2. Crossed Eyes Ratio
 
-    * link: https://arxiv.org/pdf/2011.13456.pdf
+3. LDM
 
 
-## Result Record
+## Result Record (UNDER MAINTAINANCE)
 
 * sd-model-finetuned-114514-large: 2000pics/80epoch/non-modified data/lora
 
