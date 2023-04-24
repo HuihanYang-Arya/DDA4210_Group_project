@@ -1,4 +1,4 @@
-# DDA4210-project
+# DDA4210-project - SAM(Simpson Artistic Memory)
 
 Group Name: Original Logic
 
@@ -7,6 +7,10 @@ Group Member: Huihan Yang; Jinrui Lin; Rongxiao Qu; Haoming Mo
 **Note this repo is still UNDER MAINTAINACE**
 
 Link for our basic working pipeline: https://shimo.im/file-invite/Xyip8inwgJqyJqzQRye5NvMZKbpA6/ urbbrgroun 邀请您协作「Diffusion-simpons-4210-project」，点击链接开始编辑 (please contact me if the link is invalid)
+
+## MODEL 
+
+Our model can be found in 🤗 https://huggingface.co/JerryMo/db-simpsons-asim-style and 🤗 https://huggingface.co/Foxintohumanbeing/simpson-lora. The QR code of our APP is in `APP_QR.png`. Enjoy!👋
 
 ## Data
 
