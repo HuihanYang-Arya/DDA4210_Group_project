@@ -8,13 +8,17 @@ Group Member: Huihan Yang; Jinrui Lin; Rongxiao Qu; Haoming Mo
 
 ## MODEL 
 
-Our model can be found in 🤗 https://huggingface.co/JerryMo/db-simpsons-asim-style and 🤗 https://huggingface.co/Foxintohumanbeing/simpson-lora. The QR code of our APP is in `APP_QR.png`. Enjoy!👋
+Our model can be found in 🤗 https://huggingface.co/JerryMo/db-simpsons-asim-style and 🤗 https://huggingface.co/Foxintohumanbeing/simpson-lora. The QR code of our APP is here!
+
+[Image description](APP_QR.png)
+
+Enjoy!👋
 
 ## Data 
 
 * We preprocess the data (for this part the details will be provided later) and make our own dataset https://huggingface.co/datasets/JerryMo/image-caption-blip-for-training. The dataset contains around 2500 pictures with 135MB.
 
-* For more details about dataset app, please check https://github.com/RickLin616/sd-annotation-app
+* 🗣️ We also create a dataset app for give better prompts for pictures, please check https://github.com/RickLin616/sd-annotation-app
 
 * For convenient training, you may also need a dataset with smaller size. Here are two ways you could do:
     
@@ -32,10 +36,9 @@ PLEASE NOTE THAT FOR PREPROCESSING AND REQUIREMENT OF PIPELINE, you may need to 
 For example, if you want to change the pre-trained model or the dataset, just change the content in `config.json`
 
 2. to run the training please type in the following command in terminal
-`python train_text_to_image.py` or
-`python train_text_to_image_lora.py`
+`python train_text_to_image.py` 
 
-(please note that `train_text_to_image_flax.py` is still under-maintained)
+(please note that dist_training is still under-maintained)
 
 ## Inferencing
 
@@ -53,7 +56,7 @@ To change the prompts, please change the content in prompts in the format of lis
 3. Some fine-tuned models has been provided.
 
     **file `sd-model-finetuned-114514`**
-    * `pytorch_lora_weights.bin` stores the fine-tune results.
+    * `pytorch_lora_weights.bin` stores the fine-tune results of lora.
     
     * Corresponding configurations can be found in `configuration_file/config_train_114514.json`. To directly see the result, you could change the outdir and pretrained_model_name_or_path parameters in `configuration_file/config_test.json` according to the ones in `configuration_file/config_train_114514.json`. You could also change the prompts to whatever you like. 
 
