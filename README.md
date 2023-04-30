@@ -20,9 +20,9 @@ Enjoy!👋
 
     * The fine-tuned parameters of LoRA is stored in `stored_parameters_for_models\sd-model-lora\pytorch_lora_weights.bin`.
 
-    * The fine-tuned parameters of Dreambooth is stored in **GOOGLE DRIVE LINK** due to its large size.
+    * The fine-tuned parameters of Dreambooth is stored in https://drive.google.com/file/d/1aoCCOsFvzrG27AZ46_kfyx04GGZQkwHF/view?usp=share_link due to its large size.
 
-    * The fine-tuned parameters of our improved model is stored in **GOOGLE DRIVE LINK** due to its large size.
+    * The fine-tuned parameters of our **improved model** is stored in https://drive.google.com/file/d/1K4E6b0yqoj95H7Veax8UPorBC1xjaoed/view?usp=share_link due to its large size.
 
 
 ## Data 
