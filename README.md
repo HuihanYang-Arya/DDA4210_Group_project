@@ -75,18 +75,15 @@ To change the prompts, please change the content in prompts in the format of lis
 
 1. Frechet Inception Distance (FID)
 
-    * Note that to measure the differences between the original pics and generated pics, the original pics need to be resized into 512*512. To do this, you need to format the picturse into two folders `pics/generated_images` and `pics/real_images`. Then you could directly run `python utils/resized_original_data.py` to get the `pics/resized_original_pic` folder.
-
-    * To run this, please first make sure you install the packages following https://github.com/mseitzer/pytorch-fid. 
-
-    Now you could run `python -m pytorch_fid generated_images resized_original_pic --device cuda:0 --dims 768`. The meaning of parameters and source code can be found in https://github.com/mseitzer/pytorch-fid.
+    Instructions can be found in https://github.com/mseitzer/pytorch-fid.
 
 2. Crossed Eyes Ratio
 
     This one is calculated with hands.
 
 3. LDM
-    **UNDER MAINTAIN**
+    
+    We use two pretrained model: images-Inceptionv3 and text-CLIP to get the embedding vectors and calculate their cosine similarity.
 
 
 
