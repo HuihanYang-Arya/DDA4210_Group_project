@@ -10,33 +10,51 @@ Group Member: Huihan Yang; Jinrui Lin; Rongxiao Qu; Haoming Mo
 
 Our model can be found in 🤗 https://huggingface.co/JerryMo/db-simpsons-asim-style and 🤗 https://huggingface.co/Foxintohumanbeing/simpson-lora. The QR code of our APP is here!
 
-[Image description](APP_QR.png)
+[QRcode for our application](APP_QR.png)
 
 Enjoy!👋
+
+* The fine-tune parameters is stored in `stored_parameters_for_models`. Here we provide three fine-tune results. 
+
+    * The fine-tuned parameters of LoRA is stored in `stored_parameters_for_models\sd-model-lora\pytorch_lora_weights.bin`.
+
+    * The fine-tuned parameters of Dreambooth is stored in **GOOGLE DRIVE LINK** due to its large size.
+
+    * The fine-tuned parameters of our improved model is stored in **GOOGLE DRIVE LINK** due to its large size.
+
 
 ## Data 
 
 * We preprocess the data (for this part the details will be provided later) and make our own dataset https://huggingface.co/datasets/JerryMo/image-caption-blip-for-training. The dataset contains around 2500 pictures with 135MB.
 
-* 🗣️ We also create a dataset app for give better prompts for pictures, please check https://github.com/RickLin616/sd-annotation-app
+* We also create a **dataset app** for give better prompts for pictures, please check https://github.com/RickLin616/sd-annotation-app
 
-* For convenient training, you may also need a dataset with smaller size. Here are two ways you could do:
+* For less fine-tuning time, you may also need a dataset with smaller size. Here are two ways you could do:
     
-    1. tune the parameter max_train_samples in `config.json`.
+    1. Tune the parameter max_train_samples.
 
-    2. use https://huggingface.co/datasets/skiracer/simpsons_blip_captions, which is a relatively small dataset.
+    2. Use https://huggingface.co/datasets/skiracer/simpsons_blip_captions, which is a relatively small dataset.
 
 
 ## Trainning (UNDER MAINTAINANCE)
 
-PLEASE NOTE THAT FOR PREPROCESSING AND REQUIREMENT OF PIPELINE, you may need to refer to https://github.com/huggingface/diffusers and https://github.com/huggingface/diffusers/tree/main/examples/text_to_image. 
+PLEASE NOTE THAT FOR PREPROCESSING AND REQUIREMENTS OF PACKAGES, you may need to refer to https://github.com/huggingface/diffusers and https://github.com/huggingface/diffusers/tree/main/examples/text_to_image. 
 
-1. `configuration_file/config.json` stores the parameter you need to change.
+Our model is fine-tuned on CompVis/stable-diffusion-v1-4.
 
-For example, if you want to change the pre-trained model or the dataset, just change the content in `config.json`
+Files are stored in `fine_tuning_files`
 
-2. to run the training please type in the following command in terminal
-`python train_text_to_image.py` 
+    * `train_dreambooth_lora_unfreezed.py` contains the code of our fine-tuning model.
+
+    * `train_dreambooth.py` contains the code fine-tuning simply use dreambooth method.
+
+    * `train_text_to_image_lora.py` contains the code fine-tuning simply use lora method.
+
+    * `train_text_to_image.py` contains the code fine-tuning without any technique.
+
+1. `configuration_file` stores the parameter you need to change.
+
+2. to run the training, `python train_text_to_image.py` 
 
 (please note that dist_training is still under-maintained)
 
@@ -48,17 +66,9 @@ PLEASE make sure that the parameter output_dir and pretrained_model_name_or_path
 
 To change the prompts, please change the content in prompts in the format of list. parameter num_images refers to the number of pictures generated of each prompt. Please be aware that to generate a simpson's style picture, word "The Simpson" is required in the last of sentence. 
 
-2. to run the testing please type in the following command in terminal
-`python inference_lora.py`
+2. to run the testing, `python inference_lora.py`
 
 (other is still under process)
-
-3. Some fine-tuned models has been provided.
-
-    **file `sd-model-finetuned-114514`**
-    * `pytorch_lora_weights.bin` stores the fine-tune results of lora.
-    
-    * Corresponding configurations can be found in `configuration_file/config_train_114514.json`. To directly see the result, you could change the outdir and pretrained_model_name_or_path parameters in `configuration_file/config_test.json` according to the ones in `configuration_file/config_train_114514.json`. You could also change the prompts to whatever you like. 
 
 ## measurement of fine-tune algorithm
 
@@ -72,16 +82,11 @@ To change the prompts, please change the content in prompts in the format of lis
 
 2. Crossed Eyes Ratio
 
+    This one is calculated with hands
+
 3. LDM
+    **UNDER MAINTAIN**
 
-
-## Result Record (UNDER MAINTAINANCE)
-
-* sd-model-finetuned-114514-large: 2000pics/80epoch/non-modified data/lora
-
-* sd-model-finetuned-lora-regu: lora with regularization technique added
-
-* model-simple-finetuned: 2000pics/80epoch/non-modified data/simple method
 
 
 For any questions, please CONTACT Huihan Yang ASAP!
