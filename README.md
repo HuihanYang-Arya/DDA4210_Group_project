@@ -8,7 +8,9 @@ Group Member: Huihan Yang; Jinrui Lin; Rongxiao Qu; Haoming Mo
 
 ## MODEL 
 
-Our model can be found in 🤗 https://huggingface.co/JerryMo/db-simpsons-asim-style and 🤗 https://huggingface.co/Foxintohumanbeing/simpson-lora. The QR code of our APP is here!
+Our model can be found in 🤗 https://huggingface.co/JerryMo/db-simpsons-asim-style and 🤗 https://huggingface.co/Foxintohumanbeing/simpson-lora. 
+
+The QR code of our APP is here!
 
 [QRcode for our application](APP_QR.png)
 
@@ -40,21 +42,20 @@ Enjoy!👋
 
 PLEASE NOTE THAT FOR PREPROCESSING AND REQUIREMENTS OF PACKAGES, you may need to refer to https://github.com/huggingface/diffusers and https://github.com/huggingface/diffusers/tree/main/examples/text_to_image. 
 
-Our model is fine-tuned on CompVis/stable-diffusion-v1-4.
+Our model is fine-tuned on 🤗 CompVis/stable-diffusion-v1-4.
 
 Files are stored in `fine_tuning_files`
 
-    * `train_dreambooth_lora_unfreezed.py` contains the code of our fine-tuning model.
+*  `train_dreambooth_lora_unfreezed.py` contains the code of our fine-tuning model.
 
-    * `train_dreambooth.py` contains the code fine-tuning simply use dreambooth method.
+*  `train_dreambooth.py` contains the code fine-tuning simply use dreambooth method.
 
-    * `train_text_to_image_lora.py` contains the code fine-tuning simply use lora method.
+*  `train_text_to_image_lora.py` contains the code fine-tuning simply use lora method.
 
-    * `train_text_to_image.py` contains the code fine-tuning without any technique.
+*  `train_text_to_image.py` contains the code fine-tuning without any technique.
 
-1. `configuration_file` stores the parameter you need to change.
 
-2. to run the training, `python train_text_to_image.py` 
+To run the training, `python train_text_to_image.py` 
 
 (please note that dist_training is still under-maintained)
 
@@ -82,7 +83,7 @@ To change the prompts, please change the content in prompts in the format of lis
 
 2. Crossed Eyes Ratio
 
-    This one is calculated with hands
+    This one is calculated with hands.
 
 3. LDM
     **UNDER MAINTAIN**
