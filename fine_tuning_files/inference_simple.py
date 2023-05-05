@@ -8,6 +8,8 @@ from transformers import CLIPTextModel, CLIPTokenizer
 import json
 import os
 import torch
+import argparse
+
 def load_config(config_path):
     with open(config_path, "r") as f:
         config = json.load(f)
@@ -53,7 +55,17 @@ def main(config):
             name = str(prompt.replace(" ", "_"))+f"image_{i}.png"
             image.save(os.path.join(prompt_output_dir, name))
 
+def parse_args():
+    parser = argparse.ArgumentParser(description="Image generation script")
+    parser.add_argument(
+        "--config_path",
+        default="configuration_file/config_normal_test.json",
+        type=str,
+        help="Path to the configuration file"
+    )
+    return parser.parse_args()
+
 if __name__ == "__main__":
-    config_path = "configuration_file/config_normal_test.json"
-    config = load_config(config_path)
+    args = parse_args()
+    config = load_config(args.config_path)
     main(config)
