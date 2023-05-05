@@ -69,7 +69,7 @@ git clone https://github.com/foxintohumanbeing/DDA4210_Group_project.git
 **Training Command**
 ```
 cd DDA4210_Group_project
-python fine_tuning_files/train_dreambooth_lora_unfreezed.py --config_path="configuration_file\config_train.json"
+python fine_tuning_files/train_dreambooth_lora_unfreezed.py --config_path="configuration_file/config_train.json"
 ```
 
 ## Inferencing
@@ -88,11 +88,11 @@ python fine_tuning_files/train_dreambooth_lora_unfreezed.py --config_path="confi
 
 2. `configuration_file/config_test.json` stores the parameters you need to change. 
 
-PLEASE make sure that the parameter `output_dir` and `pretrained_model_name_or_pat`h is the SAME as the parameter `output_dir` and ～`pretrained_model_name_or_path` in `config_train.json`. 
+PLEASE make sure that the parameter `output_dir` and `pretrained_model_name_or_pat`h is the SAME as the parameter `output_dir` and `pretrained_model_name_or_path` in `config_train.json`. 
 
 **Testing Command**
 ```
-python fine_tuning_files/inference_dreambooth_lora_unet.py --config_path="configuration_file\config_test.json"
+python fine_tuning_files/inference_dreambooth_lora_unet.py --config_path="configuration_file/config_test.json"
 ```
 
 (other is still under process)

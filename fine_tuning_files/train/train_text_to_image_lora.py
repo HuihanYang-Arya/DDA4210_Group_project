@@ -81,7 +81,16 @@ These are LoRA adaption weights for {base_model}. The weights were fine-tuned on
 
 
 def parse_args():
-    with open("../configuration_file/config_train_114514.json", "r") as f:
+    parser = argparse.ArgumentParser(description="Training script")
+    parser.add_argument(
+        "--config_path",
+        default="configuration_file/config_train.json",
+        type=str,
+        help="Path to the configuration file"
+    )
+    parsed_args = parser.parse_args()
+
+    with open(parsed_args.config_path, "r") as f:
         config = json.load(f)
 
     class Config:
