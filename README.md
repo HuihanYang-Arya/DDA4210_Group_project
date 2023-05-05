@@ -88,7 +88,7 @@ python fine_tuning_files/train_dreambooth_lora_unfreezed.py --config_path="confi
 
 2. `configuration_file/config_test.json` stores the parameters you need to change. 
 
-PLEASE make sure that the parameter `output_dir` and `pretrained_model_name_or_pat`h is the SAME as the parameter `output_dir` and ～`pretrained_model_name_or_path` in `config_train.json`. 
+PLEASE make sure that the parameter `output_dir` and `pretrained_model_name_or_pat`h is the SAME as the parameter `output_dir` and `pretrained_model_name_or_path` in `config_train.json`. 
 
 **Testing Command**
 ```

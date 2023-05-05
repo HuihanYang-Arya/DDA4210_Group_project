@@ -115,7 +115,16 @@ def log_validation(vae, text_encoder, tokenizer, unet, args, accelerator, weight
 
 
 def parse_args():
-    with open("configuration_file/config-normal.json", "r") as f:
+    parser = argparse.ArgumentParser(description="Training script")
+    parser.add_argument(
+        "--config_path",
+        default="configuration_file/config_train.json",
+        type=str,
+        help="Path to the configuration file"
+    )
+    parsed_args = parser.parse_args()
+
+    with open(parsed_args.config_path, "r") as f:
         config = json.load(f)
 
     class Config:
@@ -587,25 +596,6 @@ def main():
             if global_step >= args.max_train_steps:
                 break
 
-        if accelerator.is_main_process:
-            if args.validation_prompts is not None and epoch % args.validation_epochs == 0:
-                if args.use_ema:
-                    # Store the UNet parameters temporarily and load the EMA parameters to perform inference.
-                    ema_unet.store(unet.parameters())
-                    ema_unet.copy_to(unet.parameters())
-                log_validation(
-                    vae,
-                    text_encoder,
-                    tokenizer,
-                    unet,
-                    args,
-                    accelerator,
-                    weight_dtype,
-                    global_step,
-                )
-                if args.use_ema:
-                    # Switch back to the original UNet parameters.
-                    ema_unet.restore(unet.parameters())
 
     # Create the pipeline using the trained modules and save it.
     accelerator.wait_for_everyone()

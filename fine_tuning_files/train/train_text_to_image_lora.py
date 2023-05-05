@@ -13,8 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Fine-tuning script for Stable Diffusion for text2image with support for LoRA."""
-# MODIFIED by Rongxiao QU
-
 
 import argparse
 import logging
@@ -52,6 +50,7 @@ from torch.utils.tensorboard import SummaryWriter
 check_min_version("0.15.0.dev0")
 
 logger = get_logger(__name__, log_level="INFO")
+
 
 def save_model_card(repo_id: str, images=None, base_model=str, dataset_name=str, repo_folder=None):
     img_str = ""
@@ -200,27 +199,6 @@ def main():
     unet.to(accelerator.device, dtype=weight_dtype)
     vae.to(accelerator.device, dtype=weight_dtype)
     text_encoder.to(accelerator.device, dtype=weight_dtype)
-
-    # Unfreezeing freezed unet structure: 
-
-    def unfreeze_unet_layers(model, num_layers=1):
-        # Unfreeze the last two decoder blocks
-        for idx in range(4-num_layers, 4):
-            for param in model.up_blocks[idx].parameters():
-                param.requires_grad = True
-    
-
-    unfreeze_unet_layers(unet, num_layers=2)
-
-
-    def unfreeze_vae_layers(model, num_layers=1):
-        # Unfreeze the last two decoder blocks
-        for idx in range(4-num_layers, 4):
-            for param in model.decoder.up_blocks[idx].parameters():
-                param.requires_grad = True
-
-    # unfreeze_vae_layers(vae, num_layers=1)
-
 
     # now we will add new LoRA weights to the attention layers
     # It's important to realize here how many attention weights will be added and of which sizes
@@ -474,7 +452,7 @@ def main():
     # Only show the progress bar once on each machine.
     progress_bar = tqdm(range(global_step, args.max_train_steps), disable=not accelerator.is_local_main_process)
     progress_bar.set_description("Steps")
-    writer = SummaryWriter()    
+    writer = SummaryWriter(args.tensorboard_log_dir)
     global_step = 0
     for epoch in range(first_epoch, args.num_train_epochs):
         unet.train()
@@ -522,7 +500,16 @@ def main():
 
                 # Predict the noise residual and compute loss
                 model_pred = unet(noisy_latents, timesteps, encoder_hidden_states).sample
-                loss = F.mse_loss(model_pred.float(), target.float(), reduction="mean")
+                mse_loss = F.mse_loss(model_pred.float(), target.float(), reduction="mean")
+
+                # Add L2 regularization term
+                l2_reg = torch.tensor(0., dtype=weight_dtype).to(latents.device)
+                for param in unet.parameters():
+                    l2_reg += torch.norm(param, p=2)**2
+                l2_reg = 0.5 * args.regularization_lambda * l2_reg
+
+                # Combine losses
+                loss = mse_loss + l2_reg
 
                 # Gather the losses across all processes for logging (if we use distributed training).
                 avg_loss = accelerator.gather(loss.repeat(args.train_batch_size)).mean()
