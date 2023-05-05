@@ -36,12 +36,12 @@ The fine-tune parameters is stored in `stored_parameters_for_models`. Here we pr
     
     1. Tune the parameter max_train_samples.
 
-    2. Use 🤗[Skiracer/simpsons_blip_captions]https://huggingface.co/datasets/skiracer/simpsons_blip_captions, which is a relatively small dataset.
+    2. Use 🤗[Skiracer/simpsons_blip_captions](https://huggingface.co/datasets/skiracer/simpsons_blip_captions), which is a relatively small dataset.
 
 
 ## Trainning 
 
-* For preprocessing and requirement of packages, you may need to refer to 🤗[huggingface/diffusers]https://github.com/huggingface/diffusers. 
+* For preprocessing and requirement of packages, you may need to refer to 🤗[huggingface/diffusers](https://github.com/huggingface/diffusers). 
 
 ```
 git clone https://github.com/foxintohumanbeing/DDA4210_Group_project.git
@@ -99,7 +99,10 @@ python fine_tuning_files/inference_dreambooth_lora_unet.py --config_path="config
 
 ### Frechet Inception Distance (FID)
 
-Instructions can be found in [mseitzer/pytorch-fid]https://github.com/mseitzer/pytorch-fid.
+Instructions can be found in [mseitzer/pytorch-fid](https://github.com/mseitzer/pytorch-fid).
+
+### Language Drifting Measurement (LDM)
+
 
 
 For any questions, please CONTACT Huihan Yang ASAP!

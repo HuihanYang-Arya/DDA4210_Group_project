@@ -11,7 +11,6 @@ def load_config(config_path):
     return config
 
 def main(config):
-    
     # Load the trained pipeline
     pipeline = StableDiffusionPipeline.from_pretrained(
         config["pretrained_model_name_or_path"], revision=config["revision"], torch_dtype=torch.float32
@@ -38,7 +37,17 @@ def main(config):
             name = str(prompt.replace(" ", "_"))+f"image_{i}.png"
             image.save(os.path.join(prompt_output_dir, name))
 
+def parse_args():
+    parser = argparse.ArgumentParser(description="Image generation script")
+    parser.add_argument(
+        "--config_path",
+        default="configuration_file/config_test.json",
+        type=str,
+        help="Path to the configuration file"
+    )
+    return parser.parse_args()
+
 if __name__ == "__main__":
-    config_path = "configuration_file/config_test.json"
-    config = load_config(config_path)
+    args = parse_args()
+    config = load_config(args.config_path)
     main(config)
