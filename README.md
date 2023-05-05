@@ -15,9 +15,9 @@ Our models can be found in 🤗[JerryMo/db-simpsons-asim-style](https://huggingf
 The QR code of our APP is here(APP_QR.png)!Enjoy!👋
 
 
-**Model Parameter**
+**Model Checkpoint**
 
-The fine-tune parameters is stored in `stored_parameters_for_models`. Here we provide three fine-tune results. 
+The fine-tune parameters are stored in `stored_parameters_for_models`. Here we provide three fine-tune results. 
 
 * The fine-tuned parameters of LoRA is stored in `stored_parameters_for_models\sd-model-lora\pytorch_lora_weights.bin`.
 
@@ -25,7 +25,9 @@ The fine-tune parameters is stored in `stored_parameters_for_models`. Here we pr
 
 * The fine-tuned parameters of **SAM** is stored in [GoogleDrive](https://drive.google.com/file/d/1K4E6b0yqoj95H7Veax8UPorBC1xjaoed/view?usp=share_link) due to its large size.
 
-113413
+**Note**: The checkpoint may not able to be directly utilized in the inference stage using code. You may need to check model's structure on huggingface(as given) for further utilization.
+
+
 ## Data 
 
 * We preprocess the data (for this part the details will be provided later) and make our own dataset 🤗[JerryMo/image-caption-blip-for-training](https://huggingface.co/datasets/JerryMo/image-caption-blip-for-training). The dataset contains around 2500 pictures with 135MB.
@@ -43,7 +45,8 @@ The fine-tune parameters is stored in `stored_parameters_for_models`. Here we pr
 
 ## Trainning 
 
-* For preprocessing and requirement of packages, you may need to refer to 🤗[huggingface/diffusers](https://github.com/huggingface/diffusers). 
+* For preprocessing and requirement of packages, you may need to refer to 🤗[huggingface/diffusers](https://github.com/huggingface/diffusers). For any problem occur in this repo, please first check the version of huggingface, diffusers, torch
+and CUDA version. Note that the diffusers version updates frequently.
 
 ```
 git clone https://github.com/foxintohumanbeing/DDA4210_Group_project.git
