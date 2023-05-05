@@ -8,7 +8,9 @@ Group Member: Huihan Yang; Jinrui Lin; Rongxiao Qu; Haoming Mo
 
 ## MODEL 
 
-Our model can be found in 🤗 https://huggingface.co/JerryMo/db-simpsons-asim-style and 🤗 https://huggingface.co/Foxintohumanbeing/simpson-lora. 
+Our models can be found in 🤗 [JerryMo/db-simpsons-asim-style](https://huggingface.co/JerryMo/db-simpsons-asim-style) and 🤗 [Foxintohumanbeing/simpson-lora](https://huggingface.co/Foxintohumanbeing/simpson-lora). 
+
+`JerryMo/db-simpsons-asim-style` is fine-tuned from SAM and `Foxintohumanbeing/simpson-lora` is fine-tuned from LoRA, whose performance is also ok.
 
 The QR code of our APP is here!Enjoy!👋
 
@@ -63,7 +65,7 @@ git clone https://github.com/foxintohumanbeing/DDA4210_Group_project.git
 3. `configuration_file/config_train.json` stores the parameters you need to change. 
 
 
-**Training Command**
+**Testing Command**
 ```
 cd DDA4210_Group_project
 python fine_tuning_files/train_dreambooth_lora_unfreezed.py --config_path="configuration_file\config_train.json"
@@ -98,7 +100,7 @@ python fine_tuning_files/inference_dreambooth_lora_unet.py --config_path="config
 
 Frechet Inception Distance (FID)
 
-    Instructions can be found in https://github.com/mseitzer/pytorch-fid.
+Instructions can be found in https://github.com/mseitzer/pytorch-fid.
 
 
 For any questions, please CONTACT Huihan Yang ASAP!
