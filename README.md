@@ -49,7 +49,7 @@ The fine-tune parameters is stored in `stored_parameters_for_models`. Here we pr
 git clone https://github.com/foxintohumanbeing/DDA4210_Group_project.git
 ```
 
-1. Our model is fine-tuned on 🤗 CompVis/stable-diffusion-v1-4.
+1. Our model is fine-tuned on 🤗[CompVis/stable-diffusion-v1-4](https://huggingface.co/CompVis/stable-diffusion-v1-4).
 
 2. Files are stored in `fine_tuning_files`
 
@@ -105,6 +105,6 @@ Instructions can be found in [mseitzer/pytorch-fid](https://github.com/mseitzer/
 
 ### Language Drifting Measurement (LDM)
 
-
+We use the 🤗[openai/clip-vit-large-patch14](https://huggingface.co/openai/clip-vit-large-patch14). Realized code can be found in `utils/LDM.py`.
 
 For any questions, please CONTACT Huihan Yang ASAP!
