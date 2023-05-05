@@ -25,7 +25,7 @@ The fine-tune parameters is stored in `stored_parameters_for_models`. Here we pr
 
 * The fine-tuned parameters of **SAM** is stored in [GoogleDrive](https://drive.google.com/file/d/1K4E6b0yqoj95H7Veax8UPorBC1xjaoed/view?usp=share_link) due to its large size.
 
-
+113413
 ## Data 
 
 * We preprocess the data (for this part the details will be provided later) and make our own dataset 🤗[JerryMo/image-caption-blip-for-training](https://huggingface.co/datasets/JerryMo/image-caption-blip-for-training). The dataset contains around 2500 pictures with 135MB.
@@ -49,7 +49,7 @@ The fine-tune parameters is stored in `stored_parameters_for_models`. Here we pr
 git clone https://github.com/foxintohumanbeing/DDA4210_Group_project.git
 ```
 
-1. Our model is fine-tuned on 🤗 CompVis/stable-diffusion-v1-4.
+1. Our model is fine-tuned on 🤗[CompVis/stable-diffusion-v1-4](https://huggingface.co/CompVis/stable-diffusion-v1-4).
 
 2. Files are stored in `fine_tuning_files`
 
@@ -69,7 +69,7 @@ git clone https://github.com/foxintohumanbeing/DDA4210_Group_project.git
 **Training Command**
 ```
 cd DDA4210_Group_project
-python fine_tuning_files/train_dreambooth_lora_unfreezed.py --config_path="configuration_file/config_train.json"
+python fine_tuning_files/train/train_dreambooth_lora_unfreezed.py --config_path="configuration_file/config_train.json"
 ```
 
 ## Inferencing
@@ -92,7 +92,7 @@ PLEASE make sure that the parameter `output_dir` and `pretrained_model_name_or_p
 
 **Testing Command**
 ```
-python fine_tuning_files/inference_dreambooth_lora_unet.py --config_path="configuration_file/config_test.json"
+python fine_tuning_files/inference/inference_dreambooth_lora_unet.py --config_path="configuration_file/config_test.json"
 ```
 
 (other is still under process)
@@ -105,6 +105,6 @@ Instructions can be found in [mseitzer/pytorch-fid](https://github.com/mseitzer/
 
 ### Language Drifting Measurement (LDM)
 
-
+We use the 🤗[openai/clip-vit-large-patch14](https://huggingface.co/openai/clip-vit-large-patch14). Realized code can be found in `utils/LDM.py`.
 
 For any questions, please CONTACT Huihan Yang ASAP!

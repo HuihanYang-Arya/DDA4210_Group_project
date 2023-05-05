@@ -17,6 +17,7 @@
     "random_flip": false,
     "train_batch_size": 1,
     "num_train_epochs": 80,
+    "instance_prompt":"simpson",
     "max_train_steps": null,
     "gradient_accumulation_steps": 1,
     "gradient_checkpointing": false,
