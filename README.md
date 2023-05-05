@@ -30,7 +30,9 @@ The fine-tune parameters is stored in `stored_parameters_for_models`. Here we pr
 
 * We preprocess the data (for this part the details will be provided later) and make our own dataset 🤗[JerryMo/image-caption-blip-for-training](https://huggingface.co/datasets/JerryMo/image-caption-blip-for-training). The dataset contains around 2500 pictures with 135MB.
 
-* We also create a [Dataset_App](https://github.com/RickLin616/sd-annotation-app) for give better prompts for pictures. 
+* We also create a [Dataset_App](https://github.com/RickLin616/sd-annotation-app) for give better prompts for pictures. We manually captioned 1000 images and make the second dataset 🤗[JerryMo/Modified-Caption-Train-Set](https://huggingface.co/datasets/JerryMo/Modified-Caption-Train-Set).
+
+* For Dreambooth model, it need caption in great detail but smaller sample size. So we create the third dataset specifically for Dreambooth model 🤗[JerryMo/db-simpsons-dataset](https://huggingface.co/datasets/JerryMo/db-simpsons-dataset). Notice that we use 'Asim' as keyword in the caption.
 
 * For less fine-tuning time, you may also need a dataset with smaller size. Here are two ways you could do:
     
