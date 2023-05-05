@@ -42,7 +42,14 @@ def main(config):
             name = str(prompt.replace(" ", "_"))+f"image_{i}.png"
             image.save(os.path.join(prompt_output_dir, name))
 
+import os
 if __name__ == "__main__":
     config_path = "configuration_file/config_unfreezed_test.json"
+    current_path = os.getcwd()
+    print("Current Path: ", current_path)
+
+    config_path = "../configuration_file/config_test.json"
+    # Change the config --output_dir to "../stored_parameters_for_models/sd-model-finetuned-unfreezed-unet-last1-2"
+    
     config = load_config(config_path)
     main(config)
