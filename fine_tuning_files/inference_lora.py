@@ -3,6 +3,7 @@ import json
 import os
 import diffusers
 from diffusers import AutoencoderKL, DDPMScheduler, StableDiffusionPipeline, UNet2DConditionModel
+import argparse
 
 def load_config(config_path):
     with open(config_path, "r") as f:
@@ -10,7 +11,7 @@ def load_config(config_path):
     return config
 
 def main(config):
-    print(config["pretrained_model_name_or_path"])
+    
     # Load the trained pipeline
     pipeline = StableDiffusionPipeline.from_pretrained(
         config["pretrained_model_name_or_path"], revision=config["revision"], torch_dtype=torch.float32

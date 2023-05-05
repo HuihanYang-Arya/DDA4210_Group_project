@@ -12,6 +12,8 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
+# MODIFIED by Huihan Yang
+
 
 import argparse
 import logging
@@ -45,6 +47,7 @@ from diffusers.utils import check_min_version, deprecate, is_wandb_available
 from diffusers.utils.import_utils import is_xformers_available
 import json
 import os
+from torch.utils.tensorboard import SummaryWriter
 
 if is_wandb_available():
     import wandb

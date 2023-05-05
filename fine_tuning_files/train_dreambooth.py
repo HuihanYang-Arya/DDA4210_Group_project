@@ -202,7 +202,7 @@ def parse_args(input_args=None):
     )
     parser.add_argument(
         "--center_crop",
-        default=True,
+        default=False,
         action="store_true",
         help=(
             "Whether to center crop the input images to the resolution. If not set, the images will be randomly"
