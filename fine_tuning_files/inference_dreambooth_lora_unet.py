@@ -44,7 +44,7 @@ def main(config):
 
 import os
 if __name__ == "__main__":
-    config_path = "configuration_file/config_unfreezed_test.json"
+
     current_path = os.getcwd()
     print("Current Path: ", current_path)
 
