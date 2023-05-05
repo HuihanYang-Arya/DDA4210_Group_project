@@ -12,9 +12,8 @@ Our models can be found in 🤗[JerryMo/db-simpsons-asim-style](https://huggingf
 
 `JerryMo/db-simpsons-asim-style` is fine-tuned from SAM and `Foxintohumanbeing/simpson-lora` is fine-tuned from LoRA, whose performance is also ok.
 
-The QR code of our APP is here!Enjoy!👋
+The QR code of our APP is here(APP_QR.png)!Enjoy!👋
 
-[QRcode for our application](APP_QR.png)
 
 **Model Parameter**
 
