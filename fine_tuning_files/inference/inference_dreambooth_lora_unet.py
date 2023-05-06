@@ -3,7 +3,6 @@ import json
 import os
 import diffusers
 from diffusers import AutoencoderKL, DDPMScheduler, StableDiffusionPipeline, UNet2DConditionModel
-import argparse
 
 def load_config(config_path):
     with open(config_path, "r") as f:
@@ -43,17 +42,11 @@ def main(config):
             name = str(prompt.replace(" ", "_"))+f"image_{i}.png"
             image.save(os.path.join(prompt_output_dir, name))
 
-def parse_args():
-    parser = argparse.ArgumentParser(description="Image generation script")
-    parser.add_argument(
-        "--config_path",
-        default="configuration_file/config_test.json",
-        type=str,
-        help="Path to the configuration file"
-    )
-    return parser.parse_args()
-
+import os
 if __name__ == "__main__":
-    args = parse_args()
-    config = load_config(args.config_path)
+
+    config_path = "../../configuration_file/config_test.json"
+    # Changes in config_test.json: --output_dir to "../../stored_parameters_for_models/sd-model-finetuned-unfreezed-unet-last1-2"
+    
+    config = load_config(config_path)
     main(config)
