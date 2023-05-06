@@ -52,7 +52,7 @@ Our model is fine-tuned on 🤗[CompVis/stable-diffusion-v1-4](https://huggingfa
 
 **Requirement**
 
-For preprocessing and requirement of packages, you need to refer to 🤗[huggingface/diffusers](https://github.com/huggingface/diffusers). For any problem occur in this repo, please first check whether the **versions of huggingface, diffusers, torch and CUDA match**. We recommend you to create a new conda environment.
+For preprocessing and requirement of packages, you need to refer to the installzation from 🤗[huggingface/diffusers](https://github.com/huggingface/diffusers). For any problem occurs, please first check whether the **versions of huggingface, diffusers, torch and CUDA match**.
 
 
 ```
