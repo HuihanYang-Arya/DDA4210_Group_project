@@ -14,6 +14,7 @@ Our models can be found in 🤗[JerryMo/db-simpsons-asim-style](https://huggingf
 
 The QR code of our APP is [here](APP_QR.png)!Enjoy!👋
 
+Sample images can be found in `Sample Generate Imags`.
 
 **Model Checkpoint**
 
