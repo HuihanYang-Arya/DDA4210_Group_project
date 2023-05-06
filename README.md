@@ -45,11 +45,14 @@ The fine-tune parameters are stored in `stored_parameters_for_models`. Here we p
 
 ## Running command
 
-**Note:** Before start, we strongly recommend you to validate our result on hugging face instead of direct coding. Diffuers version updates frequently so codes need to be kepted updating. Moreover, to use the ckpt file we provided efficiently, we already built API on hugging face. If you want to run inference on your own, you may need to form the folder of ckpt file on your own following the instructions from hugging face documentation.   
+**Note:** Before start, we strongly recommend you to validate our result on hugging face instead of direct coding. Diffuers version updates frequently so codes need to be kepted updating. Moreover, to use the ckpt file we provided efficiently, we already built API on 🤗Hugging Face. If you want to run inference on your own, you may need to form the folder of ckpt file on your own following the instructions from hugging face documentation.   
 
-* For preprocessing and requirement of packages, you need to refer to 🤗[huggingface/diffusers](https://github.com/huggingface/diffusers). For any problem occur in this repo, please first check whether the **versions of huggingface, diffusers, torch and CUDA match**. We recommend you to create a new conda environment.
+Our model is fine-tuned on 🤗[CompVis/stable-diffusion-v1-4](https://huggingface.co/CompVis/stable-diffusion-v1-4).
 
-* Our model is fine-tuned on 🤗[CompVis/stable-diffusion-v1-4](https://huggingface.co/CompVis/stable-diffusion-v1-4).
+**Requirement**
+
+For preprocessing and requirement of packages, you need to refer to 🤗[huggingface/diffusers](https://github.com/huggingface/diffusers). For any problem occur in this repo, please first check whether the **versions of huggingface, diffusers, torch and CUDA match**. We recommend you to create a new conda environment.
+
 
 ```
 git clone https://github.com/foxintohumanbeing/DDA4210_Group_project.git
