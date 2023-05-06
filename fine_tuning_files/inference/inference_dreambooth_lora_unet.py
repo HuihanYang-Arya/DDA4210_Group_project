@@ -48,7 +48,7 @@ def parse_args():
     parser.add_argument(
         "--config_path",
         default="configuration_file/config_test.json",
-        # Change the config --output_dir to "../../stored_parameters_for_models/sd-model-lora"
+        # Change the config --output_dir to "stored_parameters_for_models/sd-model-lora"
     
         type=str,
         help="Path to the configuration file"
