@@ -72,11 +72,11 @@ PLEASE make sure that the parameter `output_dir` and `pretrained_model_name_or_p
 
 **Measurement Command**
 
-### Frechet Inception Distance (FID)
+* Frechet Inception Distance (FID)
 
 Instructions can be found in [mseitzer/pytorch-fid](https://github.com/mseitzer/pytorch-fid).
 
-### Language Drifting Measurement (LDM)
+* Language Drifting Measurement (LDM)
 
 We use the 🤗[openai/clip-vit-large-patch14](https://huggingface.co/openai/clip-vit-large-patch14). Realized code can be found in `utils/LDM.py`.
 
@@ -122,7 +122,7 @@ Training codes.
 
 ### Utils
 
-* Contains some tools to train and evaluate/
+* Contains some tools to train and evaluate.
 
 
 
