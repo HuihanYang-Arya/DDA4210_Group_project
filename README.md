@@ -46,7 +46,7 @@ The fine-tune parameters are stored in `stored_parameters_for_models`. Here we p
 
 ## Running command
 
-**Note:** Before start, we strongly recommend you to validate our result on hugging face instead of direct coding. Diffuers version updates frequently so codes need to be kepted updating. Moreover, to use the ckpt file we provided efficiently, we already built API on 🤗Hugging Face. If you want to run inference on your own, you may need to form the folder of ckpt file on your own following the instructions from hugging face documentation.   
+**Note:** Before start, we strongly recommend you to validate our result on hugging face instead of direct coding. `Diffuers` updates frequently so codes need to be kepted updating. Moreover, to use the ckpt file we provided efficiently, we already built API on 🤗Hugging Face. If you want to run inference on your own, you may need to form the folder of ckpt file on your own following the instructions from hugging face documentation.   
 
 Our model is fine-tuned on 🤗[CompVis/stable-diffusion-v1-4](https://huggingface.co/CompVis/stable-diffusion-v1-4).
 
