@@ -85,7 +85,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Training script")
     parser.add_argument(
         "--config_path",
-        default="../configuration_file/config_train.json",
+        default="configuration_file/config_train.json",
         type=str,
         help="Path to the configuration file"
     )

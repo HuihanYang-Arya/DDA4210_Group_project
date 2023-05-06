@@ -62,12 +62,12 @@ cd DDA4210_Group_project
 
 **Training Command**
 ```
-python fine_tuning_files/train/train_dreambooth_lora_unfreezed.py
+python fine_tuning_files/train/train_dreambooth_lora_unfreezed.py --config_path="configuration_file/config_train.json"
 ```
 
 **Testing Command**
 ```
-python fine_tuning_files/inference/inference_dreambooth_lora_unet.py 
+python fine_tuning_files/inference/inference_dreambooth_lora_unet.py --config_path="configuration_file/config_test.json"
 ```
 PLEASE make sure that the parameter `output_dir` and `pretrained_model_name_or_pat` is the SAME as the parameter `output_dir` and `pretrained_model_name_or_path` in `config_train.json`. 
 

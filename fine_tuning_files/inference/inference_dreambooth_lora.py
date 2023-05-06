@@ -51,7 +51,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Image generation script")
     parser.add_argument(
         "--config_path",
-        default="../../configuration_file/config_test.json",
+        default="configuration_file/config_test.json",
         type=str,
         help="Path to the configuration file"
     )
