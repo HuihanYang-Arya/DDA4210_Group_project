@@ -43,64 +43,31 @@ The fine-tune parameters are stored in `stored_parameters_for_models`. Here we p
     2. Use 🤗[Skiracer/simpsons_blip_captions](https://huggingface.co/datasets/skiracer/simpsons_blip_captions), which is a relatively small dataset.
 
 
-## Trainning 
+## Running command
 
-* For preprocessing and requirement of packages, you may need to refer to 🤗[huggingface/diffusers](https://github.com/huggingface/diffusers). For any problem occur in this repo, please first check the version of huggingface, diffusers, torch
-and CUDA version. Note that the diffusers version updates frequently.
+**Note:** Before start, we strongly recommend you to validate our result on hugging face instead of direct coding. Diffuers version updates frequently so codes need to be kepted updating. Moreover, to use the ckpt file we provided efficiently, we already built API on hugging face. If you want to run inference on your own, you may need to form the folder of ckpt file on your own following the instructions from hugging face documentation.   
+
+* For preprocessing and requirement of packages, you need to refer to 🤗[huggingface/diffusers](https://github.com/huggingface/diffusers). For any problem occur in this repo, please first check whether the **versions of huggingface, diffusers, torch and CUDA match**. We recommend you to create a new conda environment.
+
+* Our model is fine-tuned on 🤗[CompVis/stable-diffusion-v1-4](https://huggingface.co/CompVis/stable-diffusion-v1-4).
 
 ```
 git clone https://github.com/foxintohumanbeing/DDA4210_Group_project.git
+cd DDA4210_Group_project
 ```
-
-1. Our model is fine-tuned on 🤗[CompVis/stable-diffusion-v1-4](https://huggingface.co/CompVis/stable-diffusion-v1-4).
-
-2. Files are stored in `fine_tuning_files`
-
-*  `fine_tuning_files/train_dreambooth_lora_unfreezed.py`: code of SAM model.
-
-* `fine_tuning_files/train_dreambooth_lora.py`: code of model utilizing LoRA in DreamBooth.
-
-*  `fine_tuning_files/train_dreambooth.py`: code fine-tuning simply use DreamBooth method.
-
-*  `fine_tuning_files/train_text_to_image_lora.py`: code fine-tuning simply use LoRA method.
-
-*  `fine_tuning_files/train_text_to_image.py`: code fine-tuning without any technique.
-
-3. `configuration_file/config_train.json` stores the parameters you need to change. 
-
 
 **Training Command**
 ```
-cd DDA4210_Group_project
-python fine_tuning_files/train/train_dreambooth_lora_unfreezed.py --config_path="configuration_file/config_train.json"
+python fine_tuning_files/train/train_dreambooth_lora_unfreezed.py
 ```
-
-## Inferencing
-
-1. Files are stored in `fine_tuning_files`
-
-*  `fine_tuning_files/inference_dreambooth_lora_unet.py`: code of SAM model.
-
-*  `fine_tuning_files/inference_dreambooth_lora.py`: code of model utilizing LoRA in DreamBooth.
-
-*  `fine_tuning_files/inference_dreambooth.py`: code fine-tuning simply use DreamBooth method.
-
-*  `fine_tuning_files/inference_lora.py`: code fine-tuning simply use LoRA method.
-
-*  `fine_tuning_files/inference_simple.py`: code fine-tuning without any technique.
-
-2. `configuration_file/config_test.json` stores the parameters you need to change. 
-
-PLEASE make sure that the parameter `output_dir` and `pretrained_model_name_or_pat`h is the SAME as the parameter `output_dir` and `pretrained_model_name_or_path` in `config_train.json`. 
 
 **Testing Command**
 ```
-python fine_tuning_files/inference/inference_dreambooth_lora_unet.py --config_path="configuration_file/config_test.json"
+python fine_tuning_files/inference/inference_dreambooth_lora_unet.py 
 ```
+PLEASE make sure that the parameter `output_dir` and `pretrained_model_name_or_pat` is the SAME as the parameter `output_dir` and `pretrained_model_name_or_path` in `config_train.json`. 
 
-(other is still under process)
-
-## How to measure?🤔
+**Measurement Command**
 
 ### Frechet Inception Distance (FID)
 
@@ -109,5 +76,52 @@ Instructions can be found in [mseitzer/pytorch-fid](https://github.com/mseitzer/
 ### Language Drifting Measurement (LDM)
 
 We use the 🤗[openai/clip-vit-large-patch14](https://huggingface.co/openai/clip-vit-large-patch14). Realized code can be found in `utils/LDM.py`.
+
+
+## File Explaination
+
+### Fine-tuning Files
+#### Train 
+
+Training codes.
+
+*  `train_dreambooth_lora_unfreezed.py`: code of SAM model.
+
+* `train_dreambooth_lora.py`: code of model utilizing LoRA in DreamBooth.
+
+*  `train_dreambooth.py`: code fine-tuning simply use DreamBooth method.
+
+*  `train_text_to_image_lora.py`: code fine-tuning simply use LoRA method.
+
+*  `train_text_to_image.py`: code fine-tuning without any technique.
+
+#### Inference
+
+1. Files are stored in `fine_tuning_files`
+
+*  `inference_dreambooth_lora_unet.py`: code of SAM model.
+
+*  `inference_dreambooth_lora.py`: code of model utilizing LoRA in DreamBooth.
+
+*  `inference_dreambooth.py`: code fine-tuning simply use DreamBooth method.
+
+*  `inference_lora.py`: code fine-tuning simply use LoRA method.
+
+*  `inference_simple.py`: code fine-tuning without any technique.
+
+
+
+### Configuration File
+
+* `config_train.json` stores the parameters you need to change during training. 
+
+* `config_test.json` stores the parameters you need to change during testing. 
+
+### Utils
+
+* Contains some tools to train and evaluate/
+
+
+
 
 For any questions, please CONTACT Huihan Yang ASAP!
